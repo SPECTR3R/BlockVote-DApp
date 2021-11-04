@@ -1,7 +1,7 @@
 blockvote Smart Contract
 ==================
 
-A [smart contract] written in [AssemblyScript] for an app initialized with [create-near-app]
+A [smart contract] written in [AssemblyScript] for a voting app
 
 
 Quick Start
