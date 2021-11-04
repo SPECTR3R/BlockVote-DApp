@@ -1,40 +1,84 @@
-/*
- * This is an example of an AssemblyScript smart contract with two simple,
- * symmetric functions:
- *
- * 1. setGreeting: accepts a greeting, such as "howdy", and records it for the
- *    user (account_id) who sent the request
- * 2. getGreeting: accepts an account_id and returns the greeting saved for it,
- *    defaulting to "Hello"
- *
- * Learn more about writing NEAR smart contracts with AssemblyScript:
- * https://docs.near.org/docs/develop/contracts/as/intro
- *
- */
+import { logging, PersistentMap } from 'near-sdk-as'
 
-import { Context, logging, storage } from 'near-sdk-as'
+const CadidateURL = new PersistentMap<string, string>('candidateURL')
+const CandidatePair = new PersistentMap<string, string[]>('Candidate Pair')
+const PromtArray = new PersistentMap<string, string[]>('Promt Array')
+const VoteArray = new PersistentMap<string, i32[]>('Vote Array')
+const userParticipation = new PersistentMap<string, string[]>('User Participation record')
 
-const DEFAULT_MESSAGE = 'Hello'
-
-// Exported functions will be part of the public interface for your smart contract.
-// Feel free to extract behavior to non-exported functions!
-export function getGreeting(accountId: string): string | null {
-  // This uses raw `storage.get`, a low-level way to interact with on-chain
-  // storage for simple contracts.
-  // If you have something more complex, check out persistent collections:
-  // https://docs.near.org/docs/concepts/data-storage#assemblyscript-collection-types
-  return storage.get<string>(accountId, DEFAULT_MESSAGE)
+// View metho
+export function getURL(name: string): string {
+  if (CadidateURL.contains(name)) {
+    return CadidateURL.getSome(name)
+  } else {
+    logging.log('Cannot find that user' + name)
+    return ''
+  }
+}
+export function didParticipate(promt: string, user: string): bool {
+  if (userParticipation.contains(promt)) {
+    const userArray = userParticipation.getSome(promt)
+    return userArray.includes(user)
+  }
+  logging.log('promt not found')
+  return false
 }
 
-export function setGreeting(message: string): void {
-  const account_id = Context.sender
+export function getAllPromt(): string[] {
+  if (userParticipation.contains('All arrays')) {
+    return PromtArray.getSome('All arrays')
+  }
+  logging.log('no promts not found')
+  return []
+}
 
-  // Use logging.log to record logs permanently to the blockchain!
-  logging.log(
-    // String interpolation (`like ${this}`) is a work in progress:
-    // https://github.com/AssemblyScript/assemblyscript/pull/1115
-    'Saving greeting "' + message + '" for account "' + account_id + '"'
-  )
+export function getVotes(promt: string): i32[] {
+  if (VoteArray.contains(promt)) {
+    return VoteArray.getSome(promt)
+  }
+  logging.log('no votes not found for this promt')
+  return [0, 0]
+}
 
-  storage.set(account_id, message)
+// Change Mehods
+export function addURl(name: string, url: string): void {
+  CadidateURL.set(name, url)
+  logging.log('Added URL for' + name)
+}
+
+export function addPair(promt: string, name1: string, name2: string): void {
+  CandidatePair.set(promt, [name1, name2])
+}
+
+export function addToPromtArray(promt: string) {
+  if (PromtArray.contains('All arrays')) {
+    const promtArr = PromtArray.getSome('All arrays')
+    promtArr.push(promt)
+  } else {
+    PromtArray.set('All arrays', [promt])
+  }
+}
+
+export function addVote(promt: string, index: i32): void {
+  if (VoteArray.contains(promt)) {
+    const voteArray = VoteArray.getSome(promt)
+    const newVal = voteArray[index] + 1
+    voteArray[index] = newVal
+    VoteArray.set(promt, voteArray)
+  } else {
+    const newArray = [0, 0]
+    newArray[index] = 1
+    VoteArray.set(promt, newArray)
+  }
+}
+
+export function recordUser(promt: string, user: string): void {
+  if (userParticipation.contains(promt)) {
+    const userArray = userParticipation.getSome(promt)
+    userArray.push(user)
+    userParticipation.set(promt, userArray)
+  } else {
+    const newArray = [user]
+    userParticipation.set(promt, newArray)
+  }
 }
