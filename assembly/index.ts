@@ -1,84 +1,86 @@
 import { logging, PersistentMap } from 'near-sdk-as'
 
-const CadidateURL = new PersistentMap<string, string>('candidateURL')
+const CadidateImgURL = new PersistentMap<string, string>('candidateImgURL')
 const CandidatePair = new PersistentMap<string, string[]>('Candidate Pair')
-const PromtArray = new PersistentMap<string, string[]>('Promt Array')
+const ProposalArray = new PersistentMap<string, string[]>('Proposal Array')
 const VoteArray = new PersistentMap<string, i32[]>('Vote Array')
 const userParticipation = new PersistentMap<string, string[]>('User Participation record')
 
-// View metho
-export function getURL(name: string): string {
-  if (CadidateURL.contains(name)) {
-    return CadidateURL.getSome(name)
+// View methods
+
+export function getCandidateImgURL(name: string): string {
+  if (CadidateImgURL.contains(name)) {
+    return CadidateImgURL.getSome(name)
   } else {
     logging.log('Cannot find that user' + name)
     return ''
   }
 }
-export function didParticipate(promt: string, user: string): bool {
-  if (userParticipation.contains(promt)) {
-    const userArray = userParticipation.getSome(promt)
+
+export function didParticipate(proposal: string, user: string): bool {
+  if (userParticipation.contains(proposal)) {
+    const userArray = userParticipation.getSome(proposal)
     return userArray.includes(user)
   }
-  logging.log('promt not found')
+  logging.log('proposal not found')
   return false
 }
 
-export function getAllPromt(): string[] {
+export function getAllProposal(): string[] {
   if (userParticipation.contains('All arrays')) {
-    return PromtArray.getSome('All arrays')
+    return ProposalArray.getSome('All arrays')
   }
-  logging.log('no promts not found')
+  logging.log('no proposals not found')
   return []
 }
 
-export function getVotes(promt: string): i32[] {
-  if (VoteArray.contains(promt)) {
-    return VoteArray.getSome(promt)
+export function getVotes(proposal: string): i32[] {
+  if (VoteArray.contains(proposal)) {
+    return VoteArray.getSome(proposal)
   }
-  logging.log('no votes not found for this promt')
+  logging.log('no votes not found for this proposal')
   return [0, 0]
 }
 
 // Change Mehods
-export function addURl(name: string, url: string): void {
-  CadidateURL.set(name, url)
-  logging.log('Added URL for' + name)
+export function addImgURL(name: string, ImgURL: string): void {
+  CadidateImgURL.set(name, ImgURL)
+  logging.log('Added ImgURL for' + name)
 }
 
-export function addPair(promt: string, name1: string, name2: string): void {
-  CandidatePair.set(promt, [name1, name2])
+export function addPair(proposal: string, name1: string, name2: string): void {
+  CandidatePair.set(proposal, [name1, name2])
 }
 
-export function addToPromtArray(promt: string): void {
-  if (PromtArray.contains('All arrays')) {
-    const promtArr = PromtArray.getSome('All arrays')
-    promtArr.push(promt)
+export function addToProposalArray(proposal: string): void {
+  if (ProposalArray.contains('All arrays')) {
+    const proposalArr = ProposalArray.getSome('All arrays')
+    proposalArr.push(proposal)
   } else {
-    PromtArray.set('All arrays', [promt])
+    ProposalArray.set('All arrays', [proposal])
   }
 }
 
-export function addVote(promt: string, index: i32): void {
-  if (VoteArray.contains(promt)) {
-    const voteArray = VoteArray.getSome(promt)
+export function addVote(proposal: string, index: i32): void {
+  if (VoteArray.contains(proposal)) {
+    const voteArray = VoteArray.getSome(proposal)
     const newVal = voteArray[index] + 1
     voteArray[index] = newVal
-    VoteArray.set(promt, voteArray)
+    VoteArray.set(proposal, voteArray)
   } else {
     const newArray = [0, 0]
     newArray[index] = 1
-    VoteArray.set(promt, newArray)
+    VoteArray.set(proposal, newArray)
   }
 }
 
-export function recordUser(promt: string, user: string): void {
-  if (userParticipation.contains(promt)) {
-    const userArray = userParticipation.getSome(promt)
+export function recordUser(proposal: string, user: string): void {
+  if (userParticipation.contains(proposal)) {
+    const userArray = userParticipation.getSome(proposal)
     userArray.push(user)
-    userParticipation.set(promt, userArray)
+    userParticipation.set(proposal, userArray)
   } else {
     const newArray = [user]
-    userParticipation.set(promt, newArray)
+    userParticipation.set(proposal, newArray)
   }
 }
