@@ -50,7 +50,7 @@ export function addPair(promt: string, name1: string, name2: string): void {
   CandidatePair.set(promt, [name1, name2])
 }
 
-export function addToPromtArray(promt: string) {
+export function addToPromtArray(promt: string): void {
   if (PromtArray.contains('All arrays')) {
     const promtArr = PromtArray.getSome('All arrays')
     promtArr.push(promt)
