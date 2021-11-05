@@ -12,10 +12,10 @@ export function getVotes(candidate: string): i32 {
   return 0
 }
 
-export function affilliateDidParticipate(affilliate: string): bool {
+export function userDidParticipate(user: string): bool {
   if (VotersStorage.contains('votes')) {
     const votersArr = VotersStorage.getSome('votes')
-    return votersArr.includes(affilliate)
+    return votersArr.includes(user)
   } else {
     return false
   }
@@ -32,17 +32,17 @@ export function incrementVotes(candidate: string): void {
   }
 }
 
-export function recordUser(affilliate: string): void {
+export function recordUser(user: string): void {
   if (VotersStorage.contains('votes')) {
     const votersArr = VotersStorage.getSome('votes')
-    if (votersArr.includes(affilliate)) {
-      votersArr.push(affilliate)
-      logging.log('User ' + affilliate + 'added to VotersStorage')
+    if (votersArr.includes(user)) {
+      votersArr.push(user)
+      logging.log('User ' + user + 'added to VotersStorage')
     } else {
-      logging.log('User ' + affilliate + 'already Voted')
+      logging.log('User ' + user + 'already Voted')
     }
   } else {
-    logging.log('User ' + affilliate + 'added to VotersStorage')
-    VotersStorage.set('votes', [affilliate])
+    logging.log('User ' + user + 'added to VotersStorage')
+    VotersStorage.set('votes', [user])
   }
 }
