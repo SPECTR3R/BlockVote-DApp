@@ -8,10 +8,7 @@ describe('votescontract', () => {
   it('should increment a votes count by one for a given candidate', () => {
     const currenVotes = getVotes('planillaVerde')
     incrementVotes('planillaVerde')
-    expect(getVotes('planillaVerde')).toBe(
-      currenVotes + 1,
-      'counter should increment by one after a incrementVotes gets called on a given voter.'
-    )
+    expect(getVotes('planillaVerde')).toBe(currenVotes + 1)
   })
 
   it('userDidParticipate should return false if he has not voted yed', () => {

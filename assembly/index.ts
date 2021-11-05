@@ -13,8 +13,8 @@ export function getVotes(candidate: string): i32 {
 }
 
 export function userDidParticipate(user: string): bool {
-  if (VotersStorage.contains('votes')) {
-    const votersArr = VotersStorage.getSome('votes')
+  if (VotersStorage.contains('voters')) {
+    const votersArr = VotersStorage.getSome('voters')
     return votersArr.includes(user)
   } else {
     return false
@@ -33,9 +33,9 @@ export function incrementVotes(candidate: string): void {
 }
 
 export function recordUser(user: string): void {
-  if (VotersStorage.contains('votes')) {
-    const votersArr = VotersStorage.getSome('votes')
-    if (votersArr.includes(user)) {
+  if (VotersStorage.contains('voters')) {
+    const votersArr = VotersStorage.getSome('voters')
+    if (!votersArr.includes(user)) {
       votersArr.push(user)
       logging.log('User ' + user + 'added to VotersStorage')
     } else {
@@ -43,6 +43,6 @@ export function recordUser(user: string): void {
     }
   } else {
     logging.log('User ' + user + 'added to VotersStorage')
-    VotersStorage.set('votes', [user])
+    VotersStorage.set('voters', [user])
   }
 }
