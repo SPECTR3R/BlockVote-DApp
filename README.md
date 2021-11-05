@@ -24,9 +24,22 @@ Visita [Justinmind] para probar la aplicacióto o instala ´Justinmind` desde tu
 
 ### Analizando las pruebas  🔩
 
-1. Se verifica primero que nadie haya votando por la Planilla Verde. 
-2. Se extrae la cantidad de votos de 'planillaVerde' y se aumentan los votos en una unidad.
-3. Se verifica que el usuario 'juan' ya ha votado o no.
+1. Se verifica primero que nadie haya votando por la 'Planilla Verde'. 
+2. Se extrae la cantidad de votos de 'Planilla Verde' y se aumentan los votos en una unidad.
+3. Se verifica que el usuario 'Juan' ya ha votado o no.
+
+## Despliegue 📦
+
+1. 
+2.
+3.
+
+
+## Autores ✒️
+
+Armando del Río
+Luis Yañez
+Jorge Chavarín
 
   [Contrato Inteligente]: https://docs.near.org/docs/develop/contracts/overview
   [AssemblyScript]: https://www.assemblyscript.org/
