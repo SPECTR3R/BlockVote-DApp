@@ -1,4 +1,4 @@
-import { getVotes, userDidParticipate, incrementVotes, recordUser } from '..'
+import { getVotes, affilliateDidParticipate, incrementVotes, recordUser } from '..'
 
 describe('votescontract', () => {
   it('should return 0 if no one has vote for a given candidate', () => {
@@ -14,12 +14,12 @@ describe('votescontract', () => {
     )
   })
 
-  it('userDidParticipate should return false if he has not voted yed', () => {
-    expect(userDidParticipate('juan')).toBe(false)
+  it('affilliateDidParticipate should return false if them have not voted yed', () => {
+    expect(affilliateDidParticipate('juan')).toBe(false)
   })
 
-  it('userDidParticipate should return true if he is recorded as voter', () => {
+  it('affilliateDidParticipate should return true if them have been recorded as voter', () => {
     recordUser('juan')
-    expect(userDidParticipate('juan')).toBe(true)
+    expect(affilliateDidParticipate('juan')).toBe(true)
   })
 })
