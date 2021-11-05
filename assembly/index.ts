@@ -1,86 +1,133 @@
 import { logging, PersistentMap } from 'near-sdk-as'
 
-const CadidateImgURL = new PersistentMap<string, string>('candidateImgURL')
-const CandidatePair = new PersistentMap<string, string[]>('Candidate Pair')
-const ProposalArray = new PersistentMap<string, string[]>('Proposal Array')
-const VoteArray = new PersistentMap<string, i32[]>('Vote Array')
-const userParticipation = new PersistentMap<string, string[]>('User Participation record')
+const Votes = new PersistentMap<string, i32>('Vote storage')
+const VotersStorage = new PersistentMap<string, string[]>('Voters storage')
 
 // View methods
+export function getVotes(candidate: string): i32 {
+  if (Votes.contains(candidate)) {
+    return Votes.getSome(candidate)
+  }
+  logging.log('No votes not found for this candidate')
+  return 0
+}
 
-export function getCandidateImgURL(name: string): string {
-  if (CadidateImgURL.contains(name)) {
-    return CadidateImgURL.getSome(name)
+export function userDidParticipate(user: string): bool {
+  if (VotersStorage.contains('votes')) {
+    const votersArr = VotersStorage.getSome('votes')
+    return votersArr.includes(user)
   } else {
-    logging.log('Cannot find that user' + name)
-    return ''
+    return false
   }
-}
-
-export function didParticipate(proposal: string, user: string): bool {
-  if (userParticipation.contains(proposal)) {
-    const userArray = userParticipation.getSome(proposal)
-    return userArray.includes(user)
-  }
-  logging.log('proposal not found')
-  return false
-}
-
-export function getAllProposal(): string[] {
-  if (userParticipation.contains('All arrays')) {
-    return ProposalArray.getSome('All arrays')
-  }
-  logging.log('no proposals not found')
-  return []
-}
-
-export function getVotes(proposal: string): i32[] {
-  if (VoteArray.contains(proposal)) {
-    return VoteArray.getSome(proposal)
-  }
-  logging.log('no votes not found for this proposal')
-  return [0, 0]
 }
 
 // Change Mehods
-export function addImgURL(name: string, ImgURL: string): void {
-  CadidateImgURL.set(name, ImgURL)
-  logging.log('Added ImgURL for' + name)
-}
-
-export function addPair(proposal: string, name1: string, name2: string): void {
-  CandidatePair.set(proposal, [name1, name2])
-}
-
-export function addToProposalArray(proposal: string): void {
-  if (ProposalArray.contains('All arrays')) {
-    const proposalArr = ProposalArray.getSome('All arrays')
-    proposalArr.push(proposal)
+export function incrementVotes(candidate: string): void {
+  if (Votes.contains(candidate)) {
+    let candidateVotes = Votes.getSome(candidate)
+    candidateVotes = candidateVotes + 1
+    Votes.set(candidate, candidateVotes)
   } else {
-    ProposalArray.set('All arrays', [proposal])
+    Votes.set(candidate, 1)
   }
 }
 
-export function addVote(proposal: string, index: i32): void {
-  if (VoteArray.contains(proposal)) {
-    const voteArray = VoteArray.getSome(proposal)
-    const newVal = voteArray[index] + 1
-    voteArray[index] = newVal
-    VoteArray.set(proposal, voteArray)
+export function recordUser(user: string): void {
+  if (VotersStorage.contains('votes')) {
+    const votersArr = VotersStorage.getSome('votes')
+    if (votersArr.includes(user)) {
+      votersArr.push(user)
+      logging.log('User ' + user + 'added to VotersStorage')
+    } else {
+      logging.log('User ' + user + 'already Voted')
+    }
   } else {
-    const newArray = [0, 0]
-    newArray[index] = 1
-    VoteArray.set(proposal, newArray)
+    logging.log('User ' + user + 'added to VotersStorage')
+    VotersStorage.set('votes', [user])
   }
 }
 
-export function recordUser(proposal: string, user: string): void {
-  if (userParticipation.contains(proposal)) {
-    const userArray = userParticipation.getSome(proposal)
-    userArray.push(user)
-    userParticipation.set(proposal, userArray)
-  } else {
-    const newArray = [user]
-    userParticipation.set(proposal, newArray)
-  }
-}
+// import { storage, logging } from 'near-sdk-as'
+
+// // --- contract code goes below
+
+// export function incrementCounter(value: i32): void {
+//   const newCounter = storage.getPrimitive<i32>('counter', 0) + value
+//   storage.set<i32>('counter', newCounter)
+//   logging.log('Counter is now: ' + newCounter.toString())
+// }
+
+// export function incrementVotes(value: i32): void {
+//   const newVotos = storage.getPrimitive<i32>('votos', 0) + 1
+//   const newcandidatopb = storage.getPrimitive<i32>('candidatopb', 0) + 1
+//   const newcandidatopr = storage.getPrimitive<i32>('candidatopr', 0) + 1
+//   const newcandidatopa = storage.getPrimitive<i32>('candidatopa', 0) + 1
+//   const newcandidatopv = storage.getPrimitive<i32>('candidatopv', 0) + 1
+//   switch (value) {
+//     case 1:
+//       storage.set<i32>('candidatopb', newcandidatopb)
+//       logging.log('Candidatopb is now: ' + newcandidatopb.toString())
+//       break
+//     case 2:
+//       storage.set<i32>('candidatopr', newcandidatopr)
+//       logging.log('Candidatopr is now: ' + newcandidatopr.toString())
+//       break
+//     case 3:
+//       storage.set<i32>('candidatopa', newcandidatopa)
+//       logging.log('Candidatopa is now: ' + newcandidatopa.toString())
+//       break
+//     case 4:
+//       storage.set<i32>('candidatopv', newcandidatopv)
+//       logging.log('Candidatopb is now: ' + newcandidatopb.toString())
+//       break
+//     default:
+//       logging.log('No es un candidato registrado')
+//       break
+//   }
+//   storage.set<i32>('votos', newVotos)
+//   logging.log('El numero de Votos emitido es: ' + newVotos.toString())
+// }
+
+// export function decrementCounter(value: i32): void {
+//   const newCounter = storage.getPrimitive<i32>('counter', 0) - value
+//   storage.set<i32>('counter', newCounter)
+//   logging.log('Counter is now: ' + newCounter.toString())
+// }
+
+// export function getCounter(): i32 {
+//   return storage.getPrimitive<i32>('counter', 0)
+// }
+
+// export function getVotes(): i32 {
+//   return storage.getPrimitive<i32>('votos', 0)
+// }
+
+// export function getVotescpb(): i32 {
+//   return storage.getPrimitive<i32>('candidatopb', 0)
+// }
+
+// export function getVotescpr(): i32 {
+//   return storage.getPrimitive<i32>('candidatopr', 0)
+// }
+
+// export function getVotescpa(): i32 {
+//   return storage.getPrimitive<i32>('candidatopa', 0)
+// }
+
+// export function getVotespv(): i32 {
+//   return storage.getPrimitive<i32>('candidatopv', 0)
+// }
+
+// export function resetCounter(): void {
+//   storage.set<i32>('counter', 0)
+//   logging.log('Counter is reset!')
+// }
+
+// export function resetVotes(): void {
+//   storage.set<i32>('candidatopb', 0)
+//   storage.set<i32>('candidatopr', 0)
+//   storage.set<i32>('candidatopa', 0)
+//   storage.set<i32>('candidatopv', 0)
+//   storage.set<i32>('votos', 0)
+//   logging.log('La cuenta de votos es reinicializada!')
+// }
