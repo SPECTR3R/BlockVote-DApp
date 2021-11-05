@@ -28,11 +28,11 @@ Visita [Justinmind] para probar la aplicacióto o instala ´Justinmind` desde tu
 2. Se extrae la cantidad de votos de 'Planilla Verde' y se aumentan los votos en una unidad.
 3. Se verifica que el usuario 'Juan' ya ha votado o no.
 
-## Despliegue 📦
+<!-- ## Despliegue 📦
 
 1. 
-2.
-3.
+2. -->
+<!-- 3. -->
 
 
 ## Autores ✒️
