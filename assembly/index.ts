@@ -37,6 +37,7 @@ export function recordUser(user: string): void {
     const votersArr = VotersStorage.getSome('voters')
     if (!votersArr.includes(user)) {
       votersArr.push(user)
+      VotersStorage.set('voters', votersArr)
       logging.log('User ' + user + 'added to VotersStorage')
     } else {
       logging.log('User ' + user + 'already Voted')
