@@ -47,3 +47,16 @@ export function recordUser(user: string): void {
     VotersStorage.set('voters', [user])
   }
 }
+
+
+//  calls
+
+// near call dev-1636157557680-82238540475670 incrementVotes '{"candidate":"amlo"}' --account-id dev-1636157557680-82238540475670
+
+//  near view dev-1636157557680-82238540475670 getVotes '{"candidate":"amlo"}' --account-id dev-1636157557680-82238540475670
+
+//  calls
+
+// near call dev-1636157557680-82238540475670 recordUser '{"user":"jorge"}' --account-id dev-1636157557680-82238540475670
+
+//  near view dev-1636157557680-82238540475670 userDidParticipate '{"user":"jorge"}' --account-id dev-1636157557680-82238540475670
