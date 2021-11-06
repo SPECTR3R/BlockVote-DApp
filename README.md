@@ -35,12 +35,12 @@ Visita [Justinmind] para probar la aplicacióto o instala ´Justinmind` desde tu
 1. Desde la raíz del proyecto, deployar el paquete con `near dev-deploy build/release/votescontract.wasm`.
 2. Copiar el acconutID y sustituirlo en los siguientes comandos para probar el funcionamiento de los contratos.
 
-´´´bash
+```bash
 near call <acconutID> incrementVotes '{"candidate":"amlo"}' --account-id <acconutID>
 near view <acconutID> getVotes '{"candidate":"amlo"}' --account-id <acconutID>
 near call <acconutID> recordUser '{"user":"jorge"}' --account-id <acconutID>
 near view <acconutID> userDidParticipate '{"user":"jorge"}' --account-id <acconutID>
-´´´
+```
 
 ## Autores ✒️
 
