@@ -15,7 +15,7 @@ Puedes acceder al prototipo de la aplicacion en este [enlace](https://www.justin
 ## Istalación
 
 - Clona este repo, antes de compilar el código, necesitarás instalar [Node.js] ≥ 12
-- Instalar yarn vía npm: `npm install --global yarn`.
+- En caso de ser necesario, instala yarn vía npm: `npm install --global yarn`.
 - Ejecuta `yarn` desde el directorio raiz del repo de la aplicación.
 
 ## Contratos inteligentes
