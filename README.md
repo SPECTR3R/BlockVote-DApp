@@ -1,6 +1,6 @@
 # Blockvote - DApp
 
-[Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación online usando blockchain.
+[Contratos Inteligentes] escritos en [AssemblyScript] para un sistema de votación online usando blockchain.
 
 El objetivo de esta aplicación es crear un sistema de votación simple y seguro. Se usa NEAR como protocolo de blockchain.
 
@@ -57,7 +57,7 @@ near view <accountId> userDidParticipate '{"user":"jorge"}' --account-id <accoun
 - [Luis Yañez](https://www.linkedin.com/in/jorge-chavarin/)
 - [Jorge Chavarín](https://github.com/lyanezca)
 
-[contrato inteligente]: https://docs.near.org/docs/develop/contracts/overview
+[Contratos Inteligentes]: https://docs.near.org/docs/develop/contracts/overview
 [assemblyscript]: https://www.assemblyscript.org/
 [node.js]: https://nodejs.org/en/download/package-manager/
 [as-pect]: https://www.npmjs.com/package/@as-pect/cli
