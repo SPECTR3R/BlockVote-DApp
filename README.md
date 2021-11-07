@@ -58,7 +58,7 @@ near view <accountId> userDidParticipate '{"user":"jorge"}' --account-id <accoun
 - [Luis Yañez](https://www.linkedin.com/in/jorge-chavarin/)
 - [Jorge Chavarín](https://github.com/lyanezca)
 
-[contrato inteligente]: https://docs.near.org/docs/develop/contracts/overview
+[contratos inteligentes]: https://docs.near.org/docs/develop/contracts/overview
 [assemblyscript]: https://www.assemblyscript.org/
 [node.js]: https://nodejs.org/en/download/package-manager/
 [as-pect]: https://www.npmjs.com/package/@as-pect/cli
