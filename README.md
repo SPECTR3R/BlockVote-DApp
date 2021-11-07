@@ -12,7 +12,7 @@ Puedes acceder al prototipo de la aplicacion en este [enlace](https://www.justin
   <img src="public/screen.png" width="600px" alt="prototipe screen text">
 </p>
 
-## Istalación
+## Instalación
 
 - Clona este repo, antes de compilar el código, necesitarás instalar [Node.js] ≥ 12
 - En caso de ser necesario, instala yarn vía npm: `npm install --global yarn`.
