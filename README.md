@@ -1,12 +1,12 @@
 # BlockVote - DApp
 
-[Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación online usando blockchain.
+Paquete de [Contratos Inteligentes] escritos en [AssemblyScript] para un sistema de votación online usando blockchain.
 
 El objetivo de esta aplicación es crear un sistema de votación simple y seguro. Se usa NEAR como protocolo de blockchain.
 
 ## Prototipo
 
-Puedes acceder al prototipo de la aplicacion en este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justinmind] y abre en ella el archivo blockVote.vp de este repositorio.
+Puedes acceder al prototipo de la aplicacion en este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descarga la aplicación [justinmind] y abre en ella el archivo blockVote.vp de este repositorio.
 
 <p align="center">
   <img src="public/screen.png" width="600px" alt="prototipe screen text">
