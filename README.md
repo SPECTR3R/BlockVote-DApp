@@ -1,12 +1,12 @@
 # Blockvote - DApp
 
-[Contratos Inteligentes] escritos en [AssemblyScript] para un sistema de votación online usando blockchain.
+[Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación online usando blockchain.
 
 El objetivo de esta aplicación es crear un sistema de votación simple y seguro. Se usa NEAR como protocolo de blockchain.
 
 ## Prototipo
 
-Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justinmind] y abre en ella el archivo blockVote.vp de este repositorio.
+Puedes acceder al prototipo de la aplicacion en este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justinmind] y abre en ella el archivo blockVote.vp de este repositorio.
 
 <p align="center">
   <img src="public/screen.png" width="600px" alt="prototipe screen text">
@@ -20,10 +20,10 @@ Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.jus
 
 ## Contratos inteligentes
 
-Para este proyecto desarrollamos 4 contratos inteligentes para satisfacer la lógica de negocio, el código se encuentra en `../assembly/index.ts`. Los contratos son:
+Para este proyecto desarrollamos 4 contratos inteligentes para satisacer la logica de negocio, el código se encuentra en `../assembly/index.ts`. Los contratos son:
 
 1. incrementVotes: Incrementa el voto de un candidato.
-2. getVotes: Obtiene los votos de un candidato.
+2. getVotes: Obtiene los votos de un usucandidatoario
 3. recordUser: Registra que un usuario ha votado.
 4. userDidParticipate: Verifica si un usuario ya votó.
 
@@ -35,9 +35,10 @@ Para este proyecto desarrollamos 4 contratos inteligentes para satisfacer la ló
 
 ### Analizando las pruebas 🔩
 
-1. Se verifica primero que nadie haya votando por la 'Planilla Verde'.
-2. Se extrae la cantidad de votos de 'Planilla Verde' y se aumentan los votos en una unidad.
-3. Se verifica que el usuario 'Juan' ya ha votado o no.
+1. Se verifica primero que nadie haya votando por un candidato.
+2. Se extrae la cantidad de votos de un candidato y se aumentan los votos en una unidad.
+3. Se verifica que un usuario no ha votado.
+4. Se verifica que un usuario ha votado.
 
 ## Despliegue 📦
 
@@ -54,10 +55,10 @@ near view <accountId> userDidParticipate '{"user":"jorge"}' --account-id <accoun
 ## Autores ✒️
 
 - [Armando del Río](https://www.linkedin.com/in/adrio1992/)
-- [Luis Yañez](https://mx.linkedin.com/in/lyanezca)
-- [Jorge Chavarín](https://www.linkedin.com/in/jorge-chavarin/)
+- [Luis Yañez](https://www.linkedin.com/in/jorge-chavarin/)
+- [Jorge Chavarín](https://github.com/lyanezca)
 
-[Contratos Inteligentes]: https://docs.near.org/docs/develop/contracts/overview
+[contrato inteligente]: https://docs.near.org/docs/develop/contracts/overview
 [assemblyscript]: https://www.assemblyscript.org/
 [node.js]: https://nodejs.org/en/download/package-manager/
 [as-pect]: https://www.npmjs.com/package/@as-pect/cli
