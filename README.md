@@ -6,10 +6,10 @@ El objetivo de esta aplicación es crear un sistema de votación simple y seguro
 
 ## Prototipo
 
-Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justmind] y abre en ella el archivo blockVote.vp de este repositorio.
+Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justinmind] y abre en ella el archivo blockVote.vp de este repositorio.
 
 <p align="center">
-  <img src="public/screen.png" width="800px" alt="prototipe screen text">
+  <img src="public/screen.png" width="600px" alt="prototipe screen text">
 </p>
 
 ## Istalación
