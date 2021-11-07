@@ -20,12 +20,12 @@ Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.jus
 
 ## Contratos inteligentes
 
-para este proyecto desarrollamos 4 contratos inteligentes para satisacer la logica de negocio, el código se encuentra en `../assembly/index.ts`. Los contratos son:
+Para este proyecto desarrollamos 4 contratos inteligentes para satisacer la logica de negocio, el código se encuentra en `../assembly/index.ts`. Los contratos son:
 
-1. incrementVotes : incrementa el voto de un usuario
-2. getVotes : obtiene el voto de un usuario
-3. recordUser : registra un usuario
-4. userDidParticipate : verifica si un usuario ya votó
+1. incrementVotes: Incrementa el voto de un candidato.
+2. getVotes: Obtiene los votos de un usucandidatoario
+3. recordUser: Registra que un usuario ha votado.
+4. userDidParticipate: Verifica si un usuario ya votó.
 
 ## Ejecutando las pruebas ⚙️
 
