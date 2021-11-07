@@ -1,4 +1,4 @@
-# Blockvote - DApp
+# BlockVote - DApp
 
 [Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación online usando blockchain.
 
