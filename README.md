@@ -2,26 +2,41 @@
 
 ==================
 
-[Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación.
+[Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación online usando blockchain.
 
-El objetivo de esta aplicación es crear un sistema de votación simple y seguro. Se usa NEAR como plataforma de blockchain, desde la cual se emiten los votos.
+El objetivo de esta aplicación es crear un sistema de votación simple y seguro. Se usa NEAR como protocolo de blockchain.
 
-## Inicio Rápido
+## Prototipo
+
+Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justmind](https://www.justinmind.com/) y abre en ella el archivo blockVote.vp de este repositorio.
+
+<p align="center">
+  <img src="public/screen.png" width="800px" alt="prototipe screen text">
+</p>
+
+## Istalación
 
 ===========
 
-Antes de compilar el código, necesitarás instalar [Node.js] ≥ 12
+- Clona este repo, antes de compilar el código, necesitarás instalar [Node.js] ≥ 12
+- Instalar yarn vía npm: `npm install --global yarn`.
+- Ejecuta `yarn` desde el directorio raiz del repo de la aplicación.
 
-Instalar yarn vía npm: `npm install --global yarn` de otra forma visita [yarn documentation].
+## Contratos inteligentes
 
-Visita [Justinmind] para probar la aplicacióto o instala ´Justinmind` desde tu celular.
+para este proyecto desarrollamos 4 contratos inteligentes para satisacer la logica de negocio, el código se encuentra en `../assembly/index.ts`. Los contratos son:
+
+1. incrementVotes : incrementa el voto de un usuario
+2. getVotes : obtiene el voto de un usuario
+3. recordUser : registra un usuario
+4. userDidParticipate : verifica si un usuario ya votó
 
 ## Ejecutando las pruebas ⚙️
 
 ==================
 
 1. Tests: El código de pruebas se encuentra en `../assembly/__tests__/main.spec.ts`.
-2. Primero compila el código con `yarn asb`.
+2. Primero compila el paquete usando `yarn asb`.
 3. Después ejecuta `yarn test` para correr los tests. Esto corre las pruebas estándar de AssemblyScript tests usando [as-pect].
 
 ### Analizando las pruebas 🔩
@@ -33,24 +48,23 @@ Visita [Justinmind] para probar la aplicacióto o instala ´Justinmind` desde tu
 ## Despliegue 📦
 
 1. Desde la raíz del proyecto, deployar el paquete con `near dev-deploy build/release/votescontract.wasm`.
-2. Copiar el acconutID y sustituirlo en los siguientes comandos para probar el funcionamiento de los contratos.
+2. Copiar el accountIdy sustituirlo en los siguientes comandos para probar el funcionamiento de los contratos.
 
 ```bash
-near call <acconutID> incrementVotes '{"candidate":"amlo"}' --account-id <acconutID>
-near view <acconutID> getVotes '{"candidate":"amlo"}' --account-id <acconutID>
-near call <acconutID> recordUser '{"user":"jorge"}' --account-id <acconutID>
-near view <acconutID> userDidParticipate '{"user":"jorge"}' --account-id <acconutID>
+near call <accountId> incrementVotes '{"candidate":"amlo"}' --account-id <accountId>
+near view <accountId> getVotes '{"candidate":"amlo"}' --account-id <accountId>
+near call <accountId> recordUser '{"user":"jorge"}' --account-id <accountId>
+near view <accountId> userDidParticipate '{"user":"jorge"}' --account-id <accountId>
 ```
 
 ## Autores ✒️
 
-Armando del Río
-Luis Yañez
-Jorge Chavarín
+- Armando del Río
+- Luis Yañez
+- Jorge Chavarín
 
 [contrato inteligente]: https://docs.near.org/docs/develop/contracts/overview
 [assemblyscript]: https://www.assemblyscript.org/
-[create-near-app]: https://github.com/near/create-near-app
 [node.js]: https://nodejs.org/en/download/package-manager/
 [as-pect]: https://www.npmjs.com/package/@as-pect/cli
 [justinmind]: https://www.justinmind.com/usernote/tests/68299055/68299921/68299923/index.html
