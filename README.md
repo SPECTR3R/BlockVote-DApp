@@ -1,7 +1,7 @@
-## blockvote Contrato Inteligente
+## blockvote Contratos Inteligentes
 ==================
 
-[Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación.
+[Contratos Inteligentes] escritos en [AssemblyScript] para un sistema de votación.
 
 El objetivo de esta aplicación es crear un sistema de votación simple y seguro. Se usa NEAR como plataforma de blockchain, desde la cual se emiten los votos.
 
@@ -37,11 +37,11 @@ Visita [Justinmind] para probar la aplicacióto o instala ´Justinmind` desde tu
 
 ## Autores ✒️
 
-Armando del Río
-Luis Yañez
-Jorge Chavarín
+1. Armando del Río
+2. Luis Yañez
+3. Jorge Chavarín
 
-  [Contrato Inteligente]: https://docs.near.org/docs/develop/contracts/overview
+  [Contratos Inteligentes]: https://docs.near.org/docs/develop/contracts/overview
   [AssemblyScript]: https://www.assemblyscript.org/
   [create-near-app]: https://github.com/near/create-near-app
   [Node.js]: https://nodejs.org/en/download/package-manager/
