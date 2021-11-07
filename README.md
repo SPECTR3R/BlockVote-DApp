@@ -1,22 +1,18 @@
 # Blockvote - DApp
 
-==================
-
 [Contrato Inteligente] escrito en [AssemblyScript] para un sistema de votación online usando blockchain.
 
 El objetivo de esta aplicación es crear un sistema de votación simple y seguro. Se usa NEAR como protocolo de blockchain.
 
 ## Prototipo
 
-Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justmind](https://www.justinmind.com/) y abre en ella el archivo blockVote.vp de este repositorio.
+Puedes acceder al prototipo de la aplicacion en el este [enlace](https://www.justinmind.com/usernote/tests/68299055/68314322/68314380/index.html), o descara la aplicación [justmind] y abre en ella el archivo blockVote.vp de este repositorio.
 
 <p align="center">
   <img src="public/screen.png" width="800px" alt="prototipe screen text">
 </p>
 
 ## Istalación
-
-===========
 
 - Clona este repo, antes de compilar el código, necesitarás instalar [Node.js] ≥ 12
 - Instalar yarn vía npm: `npm install --global yarn`.
@@ -32,8 +28,6 @@ para este proyecto desarrollamos 4 contratos inteligentes para satisacer la logi
 4. userDidParticipate : verifica si un usuario ya votó
 
 ## Ejecutando las pruebas ⚙️
-
-==================
 
 1. Tests: El código de pruebas se encuentra en `../assembly/__tests__/main.spec.ts`.
 2. Primero compila el paquete usando `yarn asb`.
@@ -59,9 +53,9 @@ near view <accountId> userDidParticipate '{"user":"jorge"}' --account-id <accoun
 
 ## Autores ✒️
 
-- Armando del Río
-- Luis Yañez
-- Jorge Chavarín
+- [Armando del Río](https://www.linkedin.com/in/adrio1992/)
+- [Luis Yañez](https://www.linkedin.com/in/jorge-chavarin/)
+- [Jorge Chavarín](https://github.com/lyanezca)
 
 [contrato inteligente]: https://docs.near.org/docs/develop/contracts/overview
 [assemblyscript]: https://www.assemblyscript.org/
