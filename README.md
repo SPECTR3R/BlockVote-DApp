@@ -54,8 +54,8 @@ near view <accountId> userDidParticipate '{"user":"jorge"}' --account-id <accoun
 ## Autores ✒️
 
 - [Armando del Río](https://www.linkedin.com/in/adrio1992/)
-- [Luis Yañez](https://www.linkedin.com/in/jorge-chavarin/)
-- [Jorge Chavarín](https://github.com/lyanezca)
+- [Luis Yañez](https://mx.linkedin.com/in/lyanezca)
+- [Jorge Chavarín](https://www.linkedin.com/in/jorge-chavarin/)
 
 [Contratos Inteligentes]: https://docs.near.org/docs/develop/contracts/overview
 [assemblyscript]: https://www.assemblyscript.org/
